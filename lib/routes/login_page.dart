@@ -1,5 +1,7 @@
 import 'dart:collection';
+import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shixin_flutter_app/common/funs.dart';
@@ -8,6 +10,7 @@ import 'package:shixin_flutter_app/models/user.dart';
 import 'package:shixin_flutter_app/net/git_api.dart';
 import 'package:shixin_flutter_app/net/global.dart';
 import 'package:shixin_flutter_app/net/result_data.dart';
+import 'dart:convert' as convert;
 
 class LoginRoute extends StatefulWidget {
   @override
@@ -35,7 +38,10 @@ class _LoginRouteState extends State<LoginRoute> {
   Widget build(BuildContext context) {
     var gm = GmLocalizations.of(context);
     return Scaffold(
-      appBar: AppBar(title: Text(gm.login)),
+      appBar: AppBar(
+        title: Text(gm.login),
+        centerTitle: true,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -97,6 +103,8 @@ class _LoginRouteState extends State<LoginRoute> {
   }
 
   void _onLogin() async {
+    // Navigator.pushNamed(context, "home");
+
     // 先验证各个表单字段是否合法
     if ((_formKey.currentState as FormState).validate()) {
       showLoading(context);
@@ -113,6 +121,20 @@ class _LoginRouteState extends State<LoginRoute> {
         map['pwd'] = _pwdController.text;
 
         response = await Git(context).login(queryParameters: map);
+
+        print("---" + response);
+        Map<String, dynamic> user = json.decode(response);
+        bool flag = user['success'];
+        print("---" + flag.toString());
+        if (flag == true) {
+          Navigator.of(context).pop();
+
+          Navigator.of(context).pushNamed("home");
+
+          print("---" + flag.toString());
+        } else {
+          showToast(user['errorMsg']);
+        }
       } catch (e) {
         //登录失败则提示
         if (e.response?.statusCode == 401) {
@@ -123,11 +145,11 @@ class _LoginRouteState extends State<LoginRoute> {
         }
       } finally {
         // 隐藏loading框
-        Navigator.of(context).pop();
+        // Navigator.of(context).pop();
       }
       if (user != null) {
         // 返回
-        Navigator.of(context).pop();
+        // Navigator.of(context).pop();
       }
     }
   }

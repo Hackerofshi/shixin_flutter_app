@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shixin_flutter_app/models/cacheConfig.dart';
 import 'package:shixin_flutter_app/models/profile.dart';
 import 'git_api.dart';
-import 'net_cache.dart';
+import 'interceptors/net_cache.dart';
 
 // 提供四套可选主题色
 const _themes = <MaterialColor>[

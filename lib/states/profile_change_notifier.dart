@@ -64,3 +64,30 @@ class LocaleModel extends ProfileChangeNotifier {
     }
   }
 }
+
+class IndexProvider extends ProfileChangeNotifier{
+  int _index = 0;
+  PageController pageController;
+  int get index => _index;
+
+  set index(int value){
+    _index = value;
+    pageController.jumpToPage(this._index);
+    notifyListeners();
+  }
+
+  IndexProvider(){
+    pageController = PageController(initialPage: _index);
+
+  }
+
+
+  //使用ChangeNotifierProvider会在销毁时调用dispose()方法释放资源
+  @override
+  void dispose() {
+    pageController?.dispose();
+    super.dispose();
+  }
+}
+
+

@@ -1,6 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shixin_flutter_app/states/index.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -42,47 +44,72 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+    return Consumer<IndexProvider>(
+      //优化：在状态改变时viewpage子页面不会走build方法
+        child: PageView(
+          physics: NeverScrollableScrollPhysics(), //禁止滚动,
+          controller: Provider.of<IndexProvider>(context,listen: false).pageController,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
+            ChildPage("第一页"), ChildPage("第二页"), ChildPage("第三页"), ChildPage("第四页")
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        builder: (context, indexProvider, child){
+          return Scaffold(
+            body: child,
+            bottomNavigationBar: BottomNavigationBar(
+              onTap: (index){
+                indexProvider.index = index;
+              },
+              unselectedItemColor: Colors.black,
+              unselectedLabelStyle: TextStyle(
+                color: Colors.black
+              ),
+              selectedItemColor: Colors.blue,
+              currentIndex: indexProvider.index,
+              items: [
+                BottomNavigationBarItem(icon: Icon(Icons.android), title: Text("android")),
+                BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("home")),
+                BottomNavigationBarItem(icon: Icon(Icons.message), title: Text("message")),
+                BottomNavigationBarItem(icon: Icon(Icons.person), title: Text("person")),
+              ],
+            ),
+          );
+        }
+    );
+  }
+}
+
+class ChildPage extends StatefulWidget {
+  final String title;
+
+  ChildPage(this.title);
+
+  @override
+  _ChildPageState createState() => _ChildPageState();
+}
+
+class _ChildPageState extends State<ChildPage> with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
+
+  @override
+  void initState() {
+    super.initState();
+    print("${widget.title}: initState");
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    super.build(context);
+    print("${widget.title}: build");
+    return Scaffold(
+      backgroundColor: widget.title == '第一页'
+          ? Colors.red.withOpacity(0.5)
+          : widget.title == '第二页'
+          ? Colors.yellow.withOpacity(0.5)
+          : Colors.green.withOpacity(0.5),
+      appBar: AppBar(title: Text(widget.title)),
+      body: Center(child: Text(widget.title)),
     );
   }
 }

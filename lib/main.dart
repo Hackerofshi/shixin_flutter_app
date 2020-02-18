@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: ThemeModel()),
         ChangeNotifierProvider.value(value: UserModel()),
         ChangeNotifierProvider.value(value: LocaleModel()),
+        ChangeNotifierProvider.value(value: IndexProvider()),
       ],
       child: Consumer2<ThemeModel, LocaleModel>(
         builder: (BuildContext context, themeModel, localeModel, Widget child) {
@@ -30,7 +31,11 @@ class MyApp extends StatelessWidget {
             onGenerateTitle: (context) {
               return GmLocalizations.of(context).title;
             },
-            home: userModel.isLogin ? MyHomePage(title: '主页',) : LoginRoute(),
+            home: /*userModel.isLogin
+                ? MyHomePage(
+                    title: '主页',
+                  )
+                :*/ LoginRoute(),
             locale: localeModel.getLocale(),
             //我们只支持美国英语和中文简体
             supportedLocales: [
@@ -64,8 +69,9 @@ class MyApp extends StatelessWidget {
             // 注册路由表
             routes: <String, WidgetBuilder>{
               "login": (context) => LoginRoute(),
-             // "themes": (context) => ThemeChangeRoute(),
-             // "language": (context) => LanguageRoute(),
+              "home": (context) => MyHomePage(title: 'test'),
+              // "themes": (context) => ThemeChangeRoute(),
+              // "language": (context) => LanguageRoute(),
             },
           );
         },
@@ -73,4 +79,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
