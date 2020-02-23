@@ -64,4 +64,18 @@ class Git {
     return r.data;
   }
 
+
+  //获取用户项目列表
+  Future<String> getProjectsOfMine(
+      {Map<String, dynamic> queryParameters, //query参数，用于接收分页信息
+      }) async {
+    queryParameters['status'] = 'active';
+    var r = await dio.get(
+      "project/mine",
+      queryParameters: queryParameters,
+      options: _options,
+    );
+    return r.data;
+  }
+
 }

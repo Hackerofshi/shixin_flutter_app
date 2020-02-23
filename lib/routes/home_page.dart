@@ -2,6 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shixin_flutter_app/routes/project_page.dart';
 import 'package:shixin_flutter_app/states/index.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -50,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
           physics: NeverScrollableScrollPhysics(), //禁止滚动,
           controller: Provider.of<IndexProvider>(context,listen: false).pageController,
           children: <Widget>[
-            ChildPage("第一页"), ChildPage("第二页"), ChildPage("第三页"), ChildPage("第四页")
+            ProjectPage("第一页"), ChildPage("第二页"), ChildPage("第三页"), ChildPage("第四页")
           ],
         ),
         builder: (context, indexProvider, child){

@@ -20,15 +20,23 @@ class TokenInterceptors extends InterceptorsWrapper {
       }
     }
     options.headers["Authorization"] = _token;
+    options.headers["authorization"] = _token;
+    options.headers["token"] = _token;
     return options;
   }
 
   @override
   onResponse(Response response) async {
     try {
+      if (response.statusCode == 200 && response.headers['token'] != null) {
+        print("----token" + response.headers["token"][0]);
+        _token = response.headers["token"][0];
+        await LocalStorage.save(Config.TOKEN_KEY, _token);
+      }
+
       var responseJson = response.data;
       if (response.statusCode == 201 && responseJson["token"] != null) {
-        _token = 'token ' + responseJson["token"];
+        _token =  responseJson["token"];
         await LocalStorage.save(Config.TOKEN_KEY, _token);
       }
     } catch (e) {

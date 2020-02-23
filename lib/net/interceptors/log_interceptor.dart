@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:shixin_flutter_app/common/LogUtil.dart';
 import 'package:shixin_flutter_app/config/config.dart';
 
 /**
@@ -23,7 +24,7 @@ class LogsInterceptors extends InterceptorsWrapper {
   onResponse(Response response) async {
     if (Config.DEBUG) {
       if (response != null) {
-        print('返回参数: ' + response.toString());
+        LogUtil.v('返回参数: ' + response.toString());
       }
     }
     return response; // continue

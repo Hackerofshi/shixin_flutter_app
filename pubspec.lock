@@ -492,6 +492,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.0.5"
+  r_logger:
+    dependency: "direct dev"
+    description:
+      name: r_logger
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.0"
   shared_preferences:
     dependency: "direct main"
     description:
