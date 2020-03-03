@@ -1,7 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shixin_flutter_app/models/index.dart';
 
 class ProjectCard extends StatelessWidget {
+  final Project project;
+
+  ProjectCard({this.project});
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -10,20 +15,20 @@ class ProjectCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Image(
-          image: AssetImage("assets/avatar-default.png"),
+          image: project.pics != null && project.pics.length > 0
+              ? NetworkImage(project.pics[0].url)
+              : AssetImage("assets/avatar-default.png"),
           width: 100.0,
-          color: Colors.blue,
-          colorBlendMode: BlendMode.difference,
+          height: 100.0,
+          fit: BoxFit.fitWidth,
         ),
         Expanded(
           flex: 1,
-
           child: Container(
             alignment: Alignment.centerLeft,
             padding: EdgeInsets.only(right: 10.0),
             height: 30.0,
-            color: Colors.red,
-            child: Text('oooo'),
+            child: Text(project.name),
           ),
         ),
         Icon(
