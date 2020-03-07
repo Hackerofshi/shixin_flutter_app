@@ -14,7 +14,7 @@ description: A new Flutter application.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
   flutter:
@@ -33,13 +33,14 @@ dependencies:
   image_picker: ^0.6.0+20
   geolocator: ^5.1.1+1
   camera: ^0.5.2+2
-  video_player: ^0.10.1+6
+  video_player: ^0.10.8+1
   webview_flutter: ^0.3.10+4
   simple_rsa: ^0.0.5
-  shared_preferences: ^0.5.1+1
-  cached_network_image: ^0.8.0
+  shared_preferences: ^0.5.6+2
+  cached_network_image: ^2.0.0-rc
   fluttertoast: ^3.0.3
   flukit: ^1.0.2
+  flutter_refresh: ^0.0.2
 
 dev_dependencies:
   flutter_test:
