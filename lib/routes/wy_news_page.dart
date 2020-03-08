@@ -28,6 +28,7 @@ class WyNewsPage extends StatefulWidget {
 
   @override
   WyNewsPageState createState() => new WyNewsPageState();
+
 }
 
 class WyNewsPageState extends State<WyNewsPage> {
@@ -207,7 +208,7 @@ class WyNewsPageState extends State<WyNewsPage> {
       var jsonString = response_str.substring("artiList(".length,response_str.length-1);
       print("请求后的jsonString===》" + jsonString);
       Map<String, dynamic> responseJson =  json.decode(jsonString);
-      DealDatas(responseJson, request_type);
+      dealData(responseJson, request_type);
       start_index = end_index+1;
       end_index = start_index+9;
     }else{
@@ -225,7 +226,7 @@ class WyNewsPageState extends State<WyNewsPage> {
   /**
    * 列表中图片加载
    */
-  getImage(String img_url) {
+ static Widget getImage(String img_url) {
     return new
     CachedNetworkImage(
       imageUrl: img_url,
@@ -269,7 +270,7 @@ class WyNewsPageState extends State<WyNewsPage> {
   /**
    * 处理请求到的数据
    */
-  void DealDatas(jsonString, int request_type) {
+  void dealData(jsonString, int request_type) {
     try {
       var news = new wynews_enity.fromJson(jsonString);
       setState(() {

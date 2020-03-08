@@ -22,9 +22,7 @@ class ProjectPage extends StatefulWidget {
 
 class _ChildPageState extends State<ProjectPage>
     with AutomaticKeepAliveClientMixin {
-
   List<Project> listData = [];
-
 
   @override
   bool get wantKeepAlive => true;
@@ -41,10 +39,10 @@ class _ChildPageState extends State<ProjectPage>
     super.build(context);
     print("${widget.title}: build");
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(title: Text(widget.title)),
-        body: getBody(),
-        drawer:MyDrawer(),
+      backgroundColor: Colors.white,
+      appBar: AppBar(title: Text(widget.title)),
+      body: getBody(),
+      drawer: MyDrawer(),
     );
   }
 
@@ -56,20 +54,22 @@ class _ChildPageState extends State<ProjectPage>
       return CustomScrollView(
         slivers: <Widget>[
           //List
-          new SliverFixedExtentList(
-            itemExtent: 60.0,
-            delegate: new SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                  //创建列表项
-                  return ProjectCard(project:listData[index]);
-                }, childCount: (listData == null) ? 0 : listData.length //50个列表项
+          SliverPadding(
+            padding: const EdgeInsets.all(8.0),
+            sliver: new SliverFixedExtentList(
+              itemExtent: 120.0,
+              delegate: new SliverChildBuilderDelegate(
+                  (BuildContext context, int index) {
+                //创建列表项
+                return ProjectCard(project: listData[index]);
+              }, childCount: (listData == null) ? 0 : listData.length //50个列表项
+                  ),
             ),
           ),
         ],
       );
     }
   }
-
 
   void getData() async {
     var map = HashMap<String, String>();
@@ -84,9 +84,7 @@ class _ChildPageState extends State<ProjectPage>
     } catch (e) {
       //登录失败则提示
       if (e.response?.statusCode == 401) {
-        showToast(GmLocalizations
-            .of(context)
-            .userNameOrPasswordWrong);
+        showToast(GmLocalizations.of(context).userNameOrPasswordWrong);
       } else {
         showToast(e.toString());
         print(e.toString());
@@ -167,25 +165,28 @@ class MyDrawer extends StatelessWidget {
               ListTile(
                 leading: const Icon(Icons.power_settings_new),
                 title: Text(gm.logout),
-                onTap: (){
-                  showDialog(context: context,
-                  builder: (context){
-                    return AlertDialog(
-                      content: Text(gm.logoutTip),
-                      actions: <Widget>[
-                        FlatButton(onPressed: ()=>Navigator.pop(context),
-                          child: Text(gm.cancel),
-                        ), FlatButton(
-                          child: Text(gm.yes),
-                          onPressed: () {
-                            //该赋值语句会触发MaterialApp rebuild
-                            value.user = null;
-                            Navigator.pop(context);
-                          },
-                        ),
-                      ],
-                    );
-                  });
+                onTap: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          content: Text(gm.logoutTip),
+                          actions: <Widget>[
+                            FlatButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: Text(gm.cancel),
+                            ),
+                            FlatButton(
+                              child: Text(gm.yes),
+                              onPressed: () {
+                                //该赋值语句会触发MaterialApp rebuild
+                                value.user = null;
+                                Navigator.pop(context);
+                              },
+                            ),
+                          ],
+                        );
+                      });
                 },
               )
           ],

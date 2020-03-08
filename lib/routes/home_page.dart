@@ -6,7 +6,7 @@ import 'package:shixin_flutter_app/routes/project_page.dart';
 import 'package:shixin_flutter_app/states/index.dart';
 
 import 'FinanceNewPage.dart';
-import 'WyNewsPage.dart';
+import 'wy_news_page.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
