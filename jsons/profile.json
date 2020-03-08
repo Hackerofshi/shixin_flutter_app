@@ -1,5 +1,5 @@
 {
-  "user":"$user",
+  "user":"$userinfo",
   "token":"",
   "theme":5678,
   "cache":"$cacheConfig",

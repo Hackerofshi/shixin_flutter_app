@@ -59,7 +59,7 @@ class BBM54PGAwangning extends Object {
 
   BBM54PGAwangning(this.docid,this.source,this.title,this.priority,this.hasImg,this.url,this.commentCount,this.imgsrc3gtype,this.stitle,this.digest,this.imgsrc,this.ptime,);
 
-  factory BBM54PGAwangning.fromJson(Map<String, dynamic> srcJson) => _$bbm4FromJson(srcJson);
+  factory BBM54PGAwangning.fromJson(Map<String, dynamic> srcJson) => _$BBM54PGAwangningFromJson(srcJson);
 
   Map<String, dynamic> toJson() => _$BBM54PGAwangningToJson(this);
 

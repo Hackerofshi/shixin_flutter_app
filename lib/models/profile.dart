@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import "user.dart";
+import "userinfo.dart";
 import "cacheConfig.dart";
 part 'profile.g.dart';
 
@@ -7,7 +7,7 @@ part 'profile.g.dart';
 class Profile {
     Profile();
 
-    User user;
+    Userinfo user;
     String token;
     num theme;
     CacheConfig cache;

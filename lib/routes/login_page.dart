@@ -4,13 +4,17 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shixin_flutter_app/common/funs.dart';
 import 'package:shixin_flutter_app/i10n/localization_intl.dart';
 import 'package:shixin_flutter_app/models/user.dart';
+import 'package:shixin_flutter_app/models/userinfo.dart';
 import 'package:shixin_flutter_app/net/git_api.dart';
 import 'package:shixin_flutter_app/net/global.dart';
 import 'package:shixin_flutter_app/net/result_data.dart';
 import 'dart:convert' as convert;
+
+import 'package:shixin_flutter_app/states/profile_change_notifier.dart';
 
 class LoginRoute extends StatefulWidget {
   @override
@@ -26,8 +30,15 @@ class _LoginRouteState extends State<LoginRoute> {
 
   @override
   void initState() {
+    print("------");
+    if (null == Global.profile) {
+      print("true");
+    } else {
+      print("false" + Global.profile.user.login);
+    }
+
     // 自动填充上次登录的用户名，填充后将焦点定位到密码输入框
-    _unameController.text = Global.profile.lastLogin;
+    _unameController.text = Global.profile.user.login;
     if (_unameController.text != null) {
       _nameAutoFocus = false;
     }
@@ -122,11 +133,13 @@ class _LoginRouteState extends State<LoginRoute> {
 
         response = await Git(context).login(queryParameters: map);
 
-        print("---" + response);
         Map<String, dynamic> user = json.decode(response);
         bool flag = user['success'];
-        print("---" + flag.toString());
+        Userinfo userinfo = Userinfo.fromJson(user['data']);
         if (flag == true) {
+          userinfo.login = _unameController.text;
+          // 因为登录页返回后，首页会build，所以我们传false，更新user后不触发更新
+          Provider.of<UserModel>(context, listen: false).user = userinfo;
           Navigator.of(context).pop();
 
           Navigator.of(context).pushNamed("home");
