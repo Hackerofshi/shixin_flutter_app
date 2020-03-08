@@ -42,7 +42,7 @@ class _ChildPageState extends State<ProjectPage>
       backgroundColor: Colors.white,
       appBar: AppBar(title: Text(widget.title)),
       body: getBody(),
-      drawer: MyDrawer(),
+     // drawer: MyDrawer(),
     );
   }
 

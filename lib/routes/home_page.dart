@@ -60,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
         builder: (context, indexProvider, child){
           return Scaffold(
             body: child,
+            drawer: MyDrawer(),
             bottomNavigationBar: BottomNavigationBar(
               onTap: (index){
                 indexProvider.index = index;
