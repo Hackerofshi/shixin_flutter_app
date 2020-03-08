@@ -12,11 +12,7 @@ import 'package:shixin_flutter_app/util/TimeUtils.dart';
 
 class FinanceNewsPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    @override
-    FinanceNewsPageState createState() => new FinanceNewsPageState();
-  }
+  FinanceNewsPageState createState() => new FinanceNewsPageState();
 }
 
 class FinanceNewsPageState extends State<FinanceNewsPage> {
