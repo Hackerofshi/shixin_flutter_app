@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shixin_flutter_app/routes/home_page.dart';
 import 'package:shixin_flutter_app/routes/login_page.dart';
+import 'package:shixin_flutter_app/routes/splash_page.dart';
 import 'package:shixin_flutter_app/states/profile_change_notifier.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -35,7 +36,9 @@ class MyApp extends StatelessWidget {
                 ? MyHomePage(
                     title: '主页',
                   )
-                :*/ LoginRoute(),
+                :*/
+
+            SplashPage(),
             locale: localeModel.getLocale(),
             //我们只支持美国英语和中文简体
             supportedLocales: [

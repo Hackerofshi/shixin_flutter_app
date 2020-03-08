@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:shixin_flutter_app/routes/project_page.dart';
 import 'package:shixin_flutter_app/states/index.dart';
 
-import 'FinanceNewPage.dart';
 import 'wy_news_page.dart';
 
 class MyHomePage extends StatefulWidget {
