@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:shixin_flutter_app/models/index.dart';
 import 'package:shixin_flutter_app/net/interceptors/token_interceptor.dart';
 import 'package:shixin_flutter_app/net/result_data.dart';
 import 'global.dart';
@@ -25,7 +26,7 @@ class Git {
     headers: {
       HttpHeaders.acceptHeader: "application/vnd.github.squirrel-girl-preview,"
           "application/vnd.github.symmetra-preview+json",
-      HttpHeaders.contentTypeHeader:"application/json",
+      HttpHeaders.contentTypeHeader: "application/json",
     },
   ));
 
@@ -51,11 +52,10 @@ class Git {
     }*/
   }
 
-
   //获取用户项目列表
-  Future<String> login(
-      {Map<String, dynamic> queryParameters, //query参数，用于接收分页信息
-      }) async {
+  Future<String> login({
+    Map<String, dynamic> queryParameters, //query参数，用于接收分页信息
+  }) async {
     var r = await dio.post(
       "user/login",
       queryParameters: queryParameters,
@@ -64,18 +64,19 @@ class Git {
     return r.data;
   }
 
-
   //获取用户项目列表
-  Future<String> getProjectsOfMine(
-      {Map<String, dynamic> queryParameters, //query参数，用于接收分页信息
-      }) async {
+  Future<List<Project>> getProjectsOfMine({
+    Map<String, dynamic> queryParameters, //query参数，用于接收分页信息
+  }) async {
     queryParameters['status'] = 'active';
     var r = await dio.get(
       "project/mine",
       queryParameters: queryParameters,
       options: _options,
     );
-    return r.data;
-  }
 
+    List<dynamic> list = json.decode(r.data);
+
+    return list.map((e) => Project.fromJson(e)).toList();
+  }
 }
