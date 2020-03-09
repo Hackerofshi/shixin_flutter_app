@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shixin_flutter_app/net/global.dart';
 
 import 'login_page.dart';
 
@@ -10,11 +11,22 @@ class SplashPage extends StatefulWidget {
   SplashState createState() => new SplashState();
 }
 
+
 class SplashState extends State<SplashPage> {
+
+
+
+
+
   Timer timer;
 
   @override
   void initState() {
+    if (null == Global.profile) {
+      print("true");
+    } else {
+      print("false" + Global.profile.user.login);
+    }
     super.initState();
     timer = new Timer(const Duration(milliseconds: 1500), () {
       try {
