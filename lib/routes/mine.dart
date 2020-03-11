@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shixin_flutter_app/models/userinfo.dart';
+import 'package:shixin_flutter_app/models/UserOrg.dart';
 
 class MinePage extends StatefulWidget {
   final String title;
@@ -28,6 +30,22 @@ class _MinePageState extends State<MinePage> {
 
 
 class UserHeaderItem extends StatelessWidget {
+
+  final Userinfo userInfo;
+
+  final String beStaredCount;
+
+  final Color notifyColor;
+
+  final Color themeColor;
+
+  final VoidCallback refreshCallBack;
+
+  final List<UserOrg> orgList;
+
+  UserHeaderItem(this.userInfo, this.beStaredCount, this.themeColor,
+      {this.notifyColor, this.refreshCallBack, this.orgList});
+
 
   @override
   Widget build(BuildContext context) {
