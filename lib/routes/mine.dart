@@ -46,6 +46,27 @@ class UserHeaderItem extends StatelessWidget {
   UserHeaderItem(this.userInfo, this.beStaredCount, this.themeColor,
       {this.notifyColor, this.refreshCallBack, this.orgList});
 
+  _getNotifyIcon(BuildContext context,Color color){
+    if(notifyColor == null){
+      return Container();
+    }
+    return RawMaterialButton(
+      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      padding: EdgeInsets.only(top: 0.0, right: 5.0, left: 5.0),
+      constraints: BoxConstraints(minWidth: 0.0,minHeight: 0.0),
+      child: new ClipOval(
+        child: new Icon(
+          IconData(0xe600,fontFamily: 'wxcIconFont'),
+          color: color,
+          size: 18.0,
+        ),
+      ),
+      onPressed: (){
+
+      },
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
