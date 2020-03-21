@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:shixin_flutter_app/routes/project_page.dart';
 import 'package:shixin_flutter_app/states/index.dart';
 
+import 'mine.dart';
 import 'wy_news_page.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -53,7 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
           physics: NeverScrollableScrollPhysics(), //禁止滚动,
           controller: Provider.of<IndexProvider>(context,listen: false).pageController,
           children: <Widget>[
-            ProjectPage("第一页"), WyNewsPage(), ChildPage("第三页"), ChildPage("第四页")
+            ProjectPage("第一页"), WyNewsPage(), ChildPage("第三页"), MinePage("我的")
           ],
         ),
         builder: (context, indexProvider, child){
