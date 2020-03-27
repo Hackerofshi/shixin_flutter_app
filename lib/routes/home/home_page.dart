@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shixin_flutter_app/routes/admin_page.dart';
-import 'package:shixin_flutter_app/routes/project_page.dart';
+import 'package:shixin_flutter_app/routes/home/admin_page.dart';
+import 'package:shixin_flutter_app/routes/home/project_page.dart';
+import 'package:shixin_flutter_app/routes/home/wy_news_page.dart';
 import 'package:shixin_flutter_app/states/index.dart';
 
-import 'wy_news_page.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);

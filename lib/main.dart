@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shixin_flutter_app/routes/home_page.dart';
+import 'package:shixin_flutter_app/routes/home/home_page.dart';
 import 'package:shixin_flutter_app/routes/login_page.dart';
 import 'package:shixin_flutter_app/routes/splash_page.dart';
 import 'package:shixin_flutter_app/states/profile_change_notifier.dart';

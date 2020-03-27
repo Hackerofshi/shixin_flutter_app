@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shixin_flutter_app/models/index.dart';
-import 'package:shixin_flutter_app/routes/wy_news_page.dart';
 
 class ProjectCard extends StatelessWidget {
   final Project project;
