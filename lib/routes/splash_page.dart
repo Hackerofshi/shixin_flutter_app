@@ -14,10 +14,6 @@ class SplashPage extends StatefulWidget {
 
 class SplashState extends State<SplashPage> {
 
-
-
-
-
   Timer timer;
 
   @override
@@ -25,7 +21,7 @@ class SplashState extends State<SplashPage> {
     if (null == Global.profile) {
       print("true");
     } else {
-      print("false" + Global.profile.user.login);
+      print("false");
     }
     super.initState();
     timer = new Timer(const Duration(milliseconds: 1500), () {
