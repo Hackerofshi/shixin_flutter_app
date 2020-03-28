@@ -31,7 +31,7 @@ class _AdminPage extends State<AdminPage> {
                 flex: 1,
                 child: GestureDetector(
                   onTap: () {
-                    print("object");
+                    Navigator.of(context).pushNamed("leave");
                   },
                   child: Container(
                     color: Colors.white,
