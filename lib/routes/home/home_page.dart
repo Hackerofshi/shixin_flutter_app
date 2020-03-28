@@ -1,12 +1,12 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shixin_flutter_app/routes/project_page.dart';
+import 'package:shixin_flutter_app/routes/home/admin_page.dart';
+import 'package:shixin_flutter_app/routes/home/project_page.dart';
+import 'package:shixin_flutter_app/routes/home/wy_news_page.dart';
 import 'package:shixin_flutter_app/states/index.dart';
 
 import 'mine.dart';
-import 'wy_news_page.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -49,38 +49,51 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Consumer<IndexProvider>(
-      //优化：在状态改变时viewpage子页面不会走build方法
+        //优化：在状态改变时viewpage子页面不会走build方法
         child: PageView(
           physics: NeverScrollableScrollPhysics(), //禁止滚动,
-          controller: Provider.of<IndexProvider>(context,listen: false).pageController,
+          controller:
+              Provider.of<IndexProvider>(context, listen: false).pageController,
           children: <Widget>[
-            ProjectPage("第一页"), WyNewsPage(), ChildPage("第三页"), MinePage("我的")
+            ProjectPage("第一页"),
+            WyNewsPage(),
+            AdminPage(),
+            MinePage("我的")
           ],
         ),
-        builder: (context, indexProvider, child){
+        builder: (context, indexProvider, child) {
           return Scaffold(
             body: child,
             drawer: MyDrawer(),
             bottomNavigationBar: BottomNavigationBar(
-              onTap: (index){
+              onTap: (index) {
                 indexProvider.index = index;
               },
               unselectedItemColor: Colors.black,
-              unselectedLabelStyle: TextStyle(
-                color: Colors.black
-              ),
+              unselectedLabelStyle: TextStyle(color: Colors.black),
               selectedItemColor: Colors.blue,
               currentIndex: indexProvider.index,
               items: [
-                BottomNavigationBarItem(icon: Icon(Icons.android), title: Text("android")),
-                BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("home")),
-                BottomNavigationBarItem(icon: Icon(Icons.message), title: Text("message")),
-                BottomNavigationBarItem(icon: Icon(Icons.person), title: Text("person")),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.android),
+                  title: Text("android"),
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  title: Text("home"),
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.message),
+                  title: Text("message"),
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person),
+                  title: Text("person"),
+                ),
               ],
             ),
           );
-        }
-    );
+        });
   }
 }
 
@@ -93,7 +106,8 @@ class ChildPage extends StatefulWidget {
   _ChildPageState createState() => _ChildPageState();
 }
 
-class _ChildPageState extends State<ChildPage> with AutomaticKeepAliveClientMixin {
+class _ChildPageState extends State<ChildPage>
+    with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
 
@@ -111,8 +125,8 @@ class _ChildPageState extends State<ChildPage> with AutomaticKeepAliveClientMixi
       backgroundColor: widget.title == '第一页'
           ? Colors.red.withOpacity(0.5)
           : widget.title == '第二页'
-          ? Colors.yellow.withOpacity(0.5)
-          : Colors.green.withOpacity(0.5),
+              ? Colors.yellow.withOpacity(0.5)
+              : Colors.green.withOpacity(0.5),
       appBar: AppBar(title: Text(widget.title)),
       body: Center(child: Text(widget.title)),
     );

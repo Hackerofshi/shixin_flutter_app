@@ -33,14 +33,13 @@ class _LoginRouteState extends State<LoginRoute> {
     print("------");
     if (null == Global.profile) {
       print("true");
+      // 自动填充上次登录的用户名，填充后将焦点定位到密码输入框
+      _unameController.text = Global.profile.user.login;
+      if (_unameController.text != null) {
+        _nameAutoFocus = false;
+      }
     } else {
-      print("false" + Global.profile.user.login);
-    }
-
-    // 自动填充上次登录的用户名，填充后将焦点定位到密码输入框
-    _unameController.text = Global.profile.user.login;
-    if (_unameController.text != null) {
-      _nameAutoFocus = false;
+      print("false");
     }
     super.initState();
   }
