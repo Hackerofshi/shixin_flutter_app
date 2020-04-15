@@ -76,6 +76,10 @@ class _MyHomePageState extends State<MyHomePage> {
               items: [
                 BottomNavigationBarItem(
                   icon: Icon(Icons.android),
+                  activeIcon: Icon(
+                    Icons.android,
+                    color: Colors.blue,
+                  ),
                   title: Text("android"),
                 ),
                 BottomNavigationBarItem(

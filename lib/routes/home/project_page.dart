@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:shixin_flutter_app/common/funs.dart';
 import 'package:shixin_flutter_app/i10n/localization_intl.dart';
 import 'package:shixin_flutter_app/models/index.dart';
@@ -23,6 +24,8 @@ class ProjectPage extends StatefulWidget {
 class _ChildPageState extends State<ProjectPage>
     with AutomaticKeepAliveClientMixin {
   List<Project> listData = [];
+  RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
 
   @override
   bool get wantKeepAlive => true;
@@ -42,7 +45,7 @@ class _ChildPageState extends State<ProjectPage>
       backgroundColor: Colors.white,
       appBar: AppBar(title: Text(widget.title)),
       body: getBody(),
-     // drawer: MyDrawer(),
+      // drawer: MyDrawer(),
     );
   }
 
@@ -51,23 +54,35 @@ class _ChildPageState extends State<ProjectPage>
       // 加载菊花
       return CircularProgressIndicator();
     } else {
-      return CustomScrollView(
-        slivers: <Widget>[
-          //List
-          SliverPadding(
-            padding: const EdgeInsets.all(8.0),
-            sliver: new SliverFixedExtentList(
-              itemExtent: 120.0,
-              delegate: new SliverChildBuilderDelegate(
-                  (BuildContext context, int index) {
-                //创建列表项
-                return ProjectCard(project: listData[index]);
-              }, childCount: (listData == null) ? 0 : listData.length //50个列表项
+      return Column(children: <Widget>[
+        Expanded(
+          child: SmartRefresher(
+            enablePullUp: true,
+            controller: _refreshController,
+            onRefresh: _onRefresh,
+            onLoading: _onLoading,
+            child: CustomScrollView(
+              slivers: <Widget>[
+                //List
+                SliverPadding(
+                  padding: const EdgeInsets.all(8.0),
+                  sliver: new SliverFixedExtentList(
+                    itemExtent: 120.0,
+                    delegate: new SliverChildBuilderDelegate(
+                        (BuildContext context, int index) {
+                      //创建列表项
+                      return ProjectCard(project: listData[index]);
+                    },
+                        childCount:
+                            (listData == null) ? 0 : listData.length //50个列表项
+                        ),
                   ),
+                ),
+              ],
             ),
           ),
-        ],
-      );
+        )
+      ]);
     }
   }
 
@@ -90,6 +105,12 @@ class _ChildPageState extends State<ProjectPage>
         print(e.toString());
       }
     } finally {}
+  }
+
+  void _onRefresh() {
+  }
+
+  void _onLoading() {
   }
 }
 
