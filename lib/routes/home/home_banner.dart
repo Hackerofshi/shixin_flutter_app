@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:shixin_flutter_app/models/banner.dart';
 
 class HomeBanner extends StatelessWidget {
   const HomeBanner({
     Key key,
-    @required List<Object> data,
+    @required List<BannerData> data,
   })  : _data = data,
         super(key: key);
-  final List<Object> _data;
+  final List<BannerData> _data;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class HomeBanner extends StatelessWidget {
       child: Swiper(
         itemBuilder: (BuildContext context, int index) {
           return Image.network(
-            _data[index].toString(),
+            _data[index].imagePath,
             fit: BoxFit.fill,
           );
         },
