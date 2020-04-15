@@ -10,6 +10,7 @@ class NewLeave extends StatefulWidget {
 
 class _NewLeave extends State<NewLeave> {
   TextEditingController _lnameController = new TextEditingController();
+  TextEditingController _laddressController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +30,28 @@ class _NewLeave extends State<NewLeave> {
       child: Column(
         children: <Widget>[
           Padding(
-            padding:
-                EdgeInsets.only(top: 10.0, bottom: 10.0, left: 28, right: 28),
+            padding: EdgeInsets.only(top: 10, bottom: 10, left: 28, right: 28),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                Text("请假类型"),
+                RichText(
+                  text: TextSpan(
+                    text: "请假类型",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Color(0xFF7D7D7D),
+                    ),
+                    children: [
+                      TextSpan(
+                        text: '*',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 Expanded(
                   flex: 1,
                   child: SizedBox(),
@@ -49,17 +66,16 @@ class _NewLeave extends State<NewLeave> {
                           autofocus: true,
                           textAlign: TextAlign.right,
                           controller: _lnameController,
+                          style:
+                              TextStyle(fontSize: 18, color: Color(0xFF2D2D2D)),
                           decoration: InputDecoration(
                             hintText: "请输入",
                             border: InputBorder.none,
                           ),
                         ),
                       ),
-                      Image(
-                        color: Colors.black,
-                        image: AssetImage("assets/icon_right.png"),
-                        height: 20,
-                        width: 20,
+                      SizedBox(
+                        width: 5,
                       ),
                     ],
                   ),
@@ -70,7 +86,226 @@ class _NewLeave extends State<NewLeave> {
           Divider(
             height: 1,
             color: Color(0xFFE5E5E5),
-          )
+          ),
+          Padding(
+            padding: EdgeInsets.only(top: 10, bottom: 10, left: 28, right: 28),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                RichText(
+                  text: TextSpan(
+                    text: "选择项目",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Color(0xFF7D7D7D),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: SizedBox(),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Expanded(
+                        child: Text(
+                          "",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Color(0xFF2D2D2D),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Image(
+                        image: AssetImage("assets/icon_right.png"),
+                        height: 18,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          Divider(
+            height: 10,
+            color: Color(0xFFE5E5E5),
+          ),
+          Container(
+            padding: EdgeInsets.only(top: 10, bottom: 10, left: 28, right: 28),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                RichText(
+                  text: TextSpan(
+                    text: "开始时间",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Color(0xFF7D7D7D),
+                    ),
+                    children: [
+                      TextSpan(
+                        text: '*',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: SizedBox(),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Expanded(
+                        child: Text(
+                          "",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Color(0xFF2D2D2D),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Image(
+                        image: AssetImage("assets/icon_right.png"),
+                        height: 18,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          Divider(
+            height: 1,
+            color: Color(0xFFE5E5E5),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 10, bottom: 10, left: 28, right: 28),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                RichText(
+                  text: TextSpan(
+                    text: "结束时间",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Color(0xFF7D7D7D),
+                    ),
+                    children: [
+                      TextSpan(
+                        text: '*',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: SizedBox(),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Expanded(
+                        child: Text(
+                          "",
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Color(0xFF2D2D2D),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Image(
+                        image: AssetImage("assets/icon_right.png"),
+                        height: 18,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+          Divider(
+            height: 1,
+            color: Color(0xFFE5E5E5),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 10, bottom: 10, left: 28, right: 28),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                RichText(
+                  text: TextSpan(
+                    text: "安排地点",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Color(0xFF7D7D7D),
+                    ),
+                    children: [
+                      TextSpan(
+                        text: '*',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: SizedBox(),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Expanded(
+                        child: TextField(
+                          autofocus: true,
+                          textAlign: TextAlign.right,
+                          controller: _laddressController,
+                          style:
+                              TextStyle(fontSize: 18, color: Color(0xFF2D2D2D)),
+                          decoration: InputDecoration(
+                            hintText: "请输入",
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
         ],
       ),
     );
