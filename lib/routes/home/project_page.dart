@@ -1,8 +1,10 @@
 import 'dart:collection';
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:shixin_flutter_app/common/funs.dart';
@@ -11,6 +13,8 @@ import 'package:shixin_flutter_app/models/index.dart';
 import 'package:shixin_flutter_app/net/git_api.dart';
 import 'package:shixin_flutter_app/states/profile_change_notifier.dart';
 import 'package:shixin_flutter_app/widget/project_card.dart';
+
+import 'home_banner.dart';
 
 class ProjectPage extends StatefulWidget {
   final String title;
@@ -23,6 +27,7 @@ class ProjectPage extends StatefulWidget {
 
 class _ChildPageState extends State<ProjectPage>
     with AutomaticKeepAliveClientMixin {
+  List<BannerData> _data = List();
   List<Project> listData = [];
   RefreshController _refreshController =
       RefreshController(initialRefresh: false);
@@ -34,12 +39,13 @@ class _ChildPageState extends State<ProjectPage>
   void initState() {
     super.initState();
     print("${widget.title}: initState");
-    getData();
+    _initData();
   }
 
   @override
   Widget build(BuildContext context) {
     super.build(context);
+    ScreenUtil.instance = ScreenUtil(width: 1080, height: 1920)..init(context);
     print("${widget.title}: build");
     return Scaffold(
       backgroundColor: Colors.white,
@@ -63,6 +69,11 @@ class _ChildPageState extends State<ProjectPage>
             onLoading: _onLoading,
             child: CustomScrollView(
               slivers: <Widget>[
+                SliverToBoxAdapter(
+                  child: Container(
+                    child: HomeBanner(data: _data),
+                  ),
+                ),
                 //List
                 SliverPadding(
                   padding: const EdgeInsets.all(8.0),
@@ -108,9 +119,38 @@ class _ChildPageState extends State<ProjectPage>
   }
 
   void _onRefresh() {
+    _refreshController.refreshCompleted();
   }
 
   void _onLoading() {
+    _refreshController.loadNoData();
+  }
+
+  void _initData() {
+    _getBanner();
+    getData();
+  }
+
+  void _getBanner() {
+    Git(context)
+        .get("https://www.wanandroid.com/banner/json")
+        .then((value) async {
+      print(value);
+      var data = json.decode(value);
+      var list = data['data'];
+      //var data = json.decode(res['data']);
+      if (null != list) {
+        List<BannerData> datas =
+            (list as List).map((e) => BannerData.fromJson(e)).toList();
+
+        if (mounted)
+          setState(() {
+            _data.clear();
+            _data.addAll(datas);
+            print("home_page  " + _data.length.toString());
+          });
+      }
+    });
   }
 }
 

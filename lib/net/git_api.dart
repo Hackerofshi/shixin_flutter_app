@@ -7,9 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:shixin_flutter_app/models/index.dart';
 import 'package:shixin_flutter_app/net/interceptors/token_interceptor.dart';
 import 'package:shixin_flutter_app/net/result_data.dart';
+import 'package:shixin_flutter_app/util/data_utils.dart';
 import 'global.dart';
 import 'interceptors/log_interceptor.dart';
-
+import 'package:http/http.dart' as http;
 class Git {
   // 在网络请求过程中可能会需要使用当前的context信息，比如在请求失败时
   // 打开一个新路由，而打开新路由需要context信息。
@@ -78,5 +79,22 @@ class Git {
     List<dynamic> list = json.decode(r.data);
 
     return list.map((e) => Project.fromJson(e)).toList();
+  }
+
+  // get请求的封装，传入的两个参数分别是请求URL和请求参数，请求参数以map的形式传入，会在方法体中自动拼接到URL后面
+   Future<String> get(String url, {Map<String, String> params}) async {
+    if (params != null && params.isNotEmpty) {
+      // 如果参数不为空，则将参数拼接到URL后面
+      StringBuffer sb = StringBuffer("?");
+      params.forEach((key, value) {
+        sb.write("$key" + "=" + "$value" + "&");
+      });
+      String paramStr = sb.toString();
+      paramStr = paramStr.substring(0, paramStr.length - 1);
+      url += paramStr;
+    }
+    var header = await DataUtils.getHeader();
+    http.Response res = await http.get(url,headers: header);
+    return res.body;
   }
 }
