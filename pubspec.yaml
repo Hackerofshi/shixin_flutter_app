@@ -44,6 +44,7 @@ dependencies:
   flutter_swiper: ^1.1.6
   #flutter_webview_plugin: ^0.3.11
   pull_to_refresh: ^1.5.8
+  flutter_screenutil: ^0.5.3 #屏幕适配
 
 dev_dependencies:
   flutter_test:
