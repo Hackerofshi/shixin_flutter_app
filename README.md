@@ -4,7 +4,7 @@
 1. flutter_screenutil: ^0.5.3 #屏幕适配
 2. cached_network_image: ^2.0.0-rc 图片展示
 3. fluttertoast: ^3.0.3  toast
-4  dev_dependencies json_model: ^0.0.2 json_serializable: ^2.0.0 json格式化
+4. dev_dependencies json_model: ^0.0.2 json_serializable: ^2.0.0 json格式化
 
 
 A new Flutter application.
