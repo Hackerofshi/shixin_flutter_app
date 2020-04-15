@@ -7,6 +7,8 @@
 4. dev_dependencies json_model: ^0.0.2 json_serializable: ^2.0.0 json格式化
 
 
+- flutter packages pub run json_model 生成json对象
+
 A new Flutter application.
 
 ## Getting Started
