@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'banner.dart';
+part of 'bannerdata.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-BannerData _$BannerFromJson(Map<String, dynamic> json) {
-  return BannerData()
+Bannerdata _$BannerdataFromJson(Map<String, dynamic> json) {
+  return Bannerdata()
     ..desc = json['desc'] as String
     ..id = json['id'] as num
     ..imagePath = json['imagePath'] as String
@@ -18,7 +18,8 @@ BannerData _$BannerFromJson(Map<String, dynamic> json) {
     ..url = json['url'] as String;
 }
 
-Map<String, dynamic> _$BannerToJson(BannerData instance) => <String, dynamic>{
+Map<String, dynamic> _$BannerdataToJson(Bannerdata instance) =>
+    <String, dynamic>{
       'desc': instance.desc,
       'id': instance.id,
       'imagePath': instance.imagePath,

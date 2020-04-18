@@ -1,10 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'banner.g.dart';
+part 'bannerdata.g.dart';
 
 @JsonSerializable()
-class BannerData {
-    BannerData();
+class Bannerdata {
+    Bannerdata();
 
     String desc;
     num id;
@@ -15,6 +15,6 @@ class BannerData {
     num type;
     String url;
     
-    factory BannerData.fromJson(Map<String,dynamic> json) => _$BannerFromJson(json);
-    Map<String, dynamic> toJson() => _$BannerToJson(this);
+    factory Bannerdata.fromJson(Map<String,dynamic> json) => _$BannerdataFromJson(json);
+    Map<String, dynamic> toJson() => _$BannerdataToJson(this);
 }

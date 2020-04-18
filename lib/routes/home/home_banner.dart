@@ -2,15 +2,15 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:shixin_flutter_app/models/banner.dart';
+import 'package:shixin_flutter_app/models/bannerdata.dart';
 
 class HomeBanner extends StatelessWidget {
   const HomeBanner({
     Key key,
-    @required List<BannerData> data,
+    @required List<Bannerdata> data,
   })  : _data = data,
         super(key: key);
-  final List<BannerData> _data;
+  final List<Bannerdata> _data;
 
   @override
   Widget build(BuildContext context) {

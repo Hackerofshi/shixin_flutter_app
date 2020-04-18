@@ -27,7 +27,7 @@ class ProjectPage extends StatefulWidget {
 
 class _ChildPageState extends State<ProjectPage>
     with AutomaticKeepAliveClientMixin {
-  List<BannerData> _data = List();
+  List<Bannerdata> _data = List();
   List<Project> listData = [];
   RefreshController _refreshController =
       RefreshController(initialRefresh: false);
@@ -140,8 +140,8 @@ class _ChildPageState extends State<ProjectPage>
       var list = data['data'];
       //var data = json.decode(res['data']);
       if (null != list) {
-        List<BannerData> datas =
-            (list as List).map((e) => BannerData.fromJson(e)).toList();
+        List<Bannerdata> datas =
+            (list as List).map((e) => Bannerdata.fromJson(e)).toList();
 
         if (mounted)
           setState(() {

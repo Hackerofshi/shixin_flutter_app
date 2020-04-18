@@ -83,6 +83,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   title: Text("android"),
                 ),
                 BottomNavigationBarItem(
+                  icon: Icon(Icons.perm_contact_calendar),
+                  title: Text("项目"),
+                ),
+                BottomNavigationBarItem(
                   icon: Icon(Icons.home),
                   title: Text("home"),
                 ),
