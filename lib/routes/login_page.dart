@@ -31,15 +31,15 @@ class _LoginRouteState extends State<LoginRoute> {
   @override
   void initState() {
     print("------");
-    if (null == Global.profile) {
-      print("true");
+    if (null != Global.profile) {
+      print("Global.profile not null");
       // 自动填充上次登录的用户名，填充后将焦点定位到密码输入框
       _unameController.text = Global.profile.user.login;
       if (_unameController.text != null) {
         _nameAutoFocus = false;
       }
     } else {
-      print("false");
+      print("Global.profile is null");
     }
     super.initState();
   }
@@ -140,7 +140,6 @@ class _LoginRouteState extends State<LoginRoute> {
           // 因为登录页返回后，首页会build，所以我们传false，更新user后不触发更新
           Provider.of<UserModel>(context, listen: false).user = userinfo;
           Navigator.of(context).pop();
-
           Navigator.of(context).pushNamed("home");
 
           print("---" + flag.toString());

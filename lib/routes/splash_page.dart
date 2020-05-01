@@ -19,9 +19,9 @@ class SplashState extends State<SplashPage> {
   @override
   void initState() {
     if (null == Global.profile) {
-      print("true");
+      print("Global.profile is null ");
     } else {
-      print("false");
+      print("Global.profile not null ");
     }
     super.initState();
     timer = new Timer(const Duration(milliseconds: 1500), () {
