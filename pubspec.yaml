@@ -70,12 +70,6 @@ flutter:
     - static/images/
     - static/file/
     - assets/icon_leave.png
-  fonts:
-    - family: wxcIconFont
-      fonts:
-        #- asset: static/font/iconfont.ttf
-    - family: google_kavivanar
-      fonts:
       #- asset: static/font/google_kavivanar.ttf
   # To add assets to your application, add an assets section, like this:
   # assets:
