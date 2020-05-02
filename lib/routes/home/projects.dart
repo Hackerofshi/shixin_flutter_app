@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-class Project extends StatefulWidget {
+class MyProject extends StatefulWidget {
   @override
   _ProjectState createState() {
     // TODO: implement createState
@@ -8,10 +9,15 @@ class Project extends StatefulWidget {
   }
 }
 
-class _ProjectState extends State<Project> {
+class _ProjectState extends State<MyProject> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return null;
+    return Scaffold(
+      appBar: AppBar(title: Text("项目")),
+      body: Center(
+        child: Text("项目"),
+      ),
+    );
   }
 }

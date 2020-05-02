@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AndroidCardItem extends StatelessWidget {
@@ -8,9 +7,14 @@ class AndroidCardItem extends StatelessWidget {
   final RoundedRectangleBorder shape;
   final double elevation;
 
-  const AndroidCardItem({Key key, this.margin, this.color, this.shape,
-    this.elevation = 5.0, this.child}) : super(key: key);
-
+  const AndroidCardItem(
+      {Key key,
+      this.margin,
+      this.color,
+      this.shape,
+      this.elevation = 5.0,
+      this.child})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +22,11 @@ class AndroidCardItem extends StatelessWidget {
     RoundedRectangleBorder shape = this.shape;
     Color color = this.color;
 
-    margin??=EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0, bottom: 10.0);
+    margin ??=
+        EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0, bottom: 10.0);
     shape ??= new RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(4.0))
-    );
-    color ??=new Color(0xFF24292E);
+        borderRadius: BorderRadius.all(Radius.circular(4.0)));
+    color ??= new Color(0xFF24292E);
     // TODO: implement build
     return new Card(
       elevation: elevation,

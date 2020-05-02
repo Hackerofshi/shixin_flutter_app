@@ -39,8 +39,9 @@ class WyNewsPageState extends State<WyNewsPage> {
   bool has_next_page = true;
 
   bool issuccessful = true;
-  var start_index =0 ;
-  var end_index =10;
+  var start_index = 0;
+
+  var end_index = 10;
 
   @override
   void initState() {
@@ -49,7 +50,7 @@ class WyNewsPageState extends State<WyNewsPage> {
   }
 
   getBody() {
-    if(issuccessful ==true ){
+    if (issuccessful == true) {
       if (listData.isEmpty) {
         // 加载菊花
         return CircularProgressIndicator();
@@ -66,7 +67,7 @@ class WyNewsPageState extends State<WyNewsPage> {
               shrinkWrap: true,
             ));
       }
-    }else{
+    } else {
       return new Refresh(
           onFooterRefresh: onFooterRefresh,
           onHeaderRefresh: pullToRefresh,
@@ -74,7 +75,8 @@ class WyNewsPageState extends State<WyNewsPage> {
             itemCount: 1,
             itemBuilder: (BuildContext context, int position) {
               return Center(
-                child: new Text("异常", style: new TextStyle(fontSize: 40.0, color: Colors.black)),
+                child: new Text("异常",
+                    style: new TextStyle(fontSize: 40.0, color: Colors.black)),
               );
             },
             physics: new AlwaysScrollableScrollPhysics(),
@@ -85,8 +87,12 @@ class WyNewsPageState extends State<WyNewsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Center(
-      child: getBody(),
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(title: Text('新闻')),
+      body: new Center(
+        child: getBody(),
+      ),
     );
   }
 
@@ -146,7 +152,7 @@ class WyNewsPageState extends State<WyNewsPage> {
                             new Expanded(
                               child: new Container(
                                 margin:
-                                    new EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
+                                new EdgeInsets.fromLTRB(0.0, 5.0, 0.0, 0.0),
                                 child: new Stack(
                                   children: <Widget>[
                                     new Container(
@@ -195,23 +201,25 @@ class WyNewsPageState extends State<WyNewsPage> {
    * isLoadMore 是否为加载更多
    */
   void getDatas(int request_type) async {
-    if(request_type ==REFRESH_REQIEST){
+    if (request_type == REFRESH_REQIEST) {
       start_index = 0;
       end_index = 10;
     }
-    String url = "https://3g.163.com/touch/reconstruct/article/list/BBM54PGAwangning/"+start_index.toString()+"-"+end_index.toString()+".html";
+    String url = "https://3g.163.com/touch/reconstruct/article/list/BBM54PGAwangning/" +
+        start_index.toString() + "-" + end_index.toString() + ".html";
     print("请求的url===》" + url);
     Dio dio = new Dio();
     Response response = await dio.get(url);
     String response_str = response.data;
-    if(response_str.isNotEmpty){
-      var jsonString = response_str.substring("artiList(".length,response_str.length-1);
+    if (response_str.isNotEmpty) {
+      var jsonString = response_str.substring(
+          "artiList(".length, response_str.length - 1);
       print("请求后的jsonString===》" + jsonString);
-      Map<String, dynamic> responseJson =  json.decode(jsonString);
+      Map<String, dynamic> responseJson = json.decode(jsonString);
       dealData(responseJson, request_type);
-      start_index = end_index+1;
-      end_index = start_index+9;
-    }else{
+      start_index = end_index + 1;
+      end_index = start_index + 9;
+    } else {
       Fluttertoast.showToast(
           msg: "已经没有新数据了",
           toastLength: Toast.LENGTH_SHORT,
@@ -220,19 +228,19 @@ class WyNewsPageState extends State<WyNewsPage> {
           backgroundColor: Colors.black,
           textColor: Colors.white);
     }
-
   }
 
   /**
    * 列表中图片加载
    */
- static Widget getImage(String img_url) {
+  static Widget getImage(String img_url) {
     return new
     CachedNetworkImage(
       imageUrl: img_url,
-      placeholder: (context, url) => new Center(
+      placeholder: (context, url) =>
+      new Center(
         child: CircularProgressIndicator(),
-      ) ,
+      ),
       errorWidget: (context, url, error) => new Icon(Icons.error),
     );
   }
@@ -242,18 +250,18 @@ class WyNewsPageState extends State<WyNewsPage> {
    */
   void onItemClick(int i, String articleTitle) {
     String h5_url = (listData[i].data as BBM54PGAwangning).url;
-    String title= (listData[i].data as BBM54PGAwangning).title;
+    String title = (listData[i].data as BBM54PGAwangning).title;
     Navigator.push(
         context,
         new MaterialPageRoute(
 //            builder: (context) => new NewsWebPage(h5_url,'新闻详情')));
           //  builder: (context) => new NewsWebPage(h5_url,title)
-         )
+        )
     );
   }
 
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
-      new GlobalKey<RefreshIndicatorState>();
+  new GlobalKey<RefreshIndicatorState>();
 
   /**
    *下拉刷新
@@ -274,10 +282,10 @@ class WyNewsPageState extends State<WyNewsPage> {
     try {
       var news = new wynews_enity.fromJson(jsonString);
       setState(() {
-        if(request_type==REFRESH_REQIEST){
+        if (request_type == REFRESH_REQIEST) {
           listData.clear();
           for (BBM54PGAwangning data in news.bBM54PGAwangning) {
-            ListEnity listEnity = new ListEnity("main",data);
+            ListEnity listEnity = new ListEnity("main", data);
             listData.add(listEnity);
           }
           Fluttertoast.showToast(
@@ -287,7 +295,7 @@ class WyNewsPageState extends State<WyNewsPage> {
               timeInSecForIos: 1,
               backgroundColor: Colors.black,
               textColor: Colors.white);
-        }else{
+        } else {
           List<ListEnity> list1 = new List<ListEnity>();
           list1.addAll(listData);
           for (BBM54PGAwangning data in news.bBM54PGAwangning) {

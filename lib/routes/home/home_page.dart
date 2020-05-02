@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shixin_flutter_app/models/project.dart';
 import 'package:shixin_flutter_app/routes/home/admin_page.dart';
 import 'package:shixin_flutter_app/routes/home/project_page.dart';
+import 'package:shixin_flutter_app/routes/home/projects.dart';
 import 'package:shixin_flutter_app/routes/home/wy_news_page.dart';
 import 'package:shixin_flutter_app/states/index.dart';
 
@@ -58,6 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ProjectPage("第一页"),
             WyNewsPage(),
             AdminPage(),
+            MyProject(),
             MinePage("我的")
           ],
         ),

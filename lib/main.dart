@@ -33,13 +33,7 @@ class MyApp extends StatelessWidget {
             onGenerateTitle: (context) {
               return GmLocalizations.of(context).title;
             },
-            home: /*userModel.isLogin
-                ? MyHomePage(
-                    title: '主页',
-                  )
-                :*/
-
-            SplashPage(),
+            home: SplashPage(),
             locale: localeModel.getLocale(),
             //我们只支持美国英语和中文简体
             supportedLocales: [
@@ -71,10 +65,11 @@ class MyApp extends StatelessWidget {
               }
             },
             // 注册路由表
+
             routes: <String, WidgetBuilder>{
               "login": (context) => LoginRoute(),
               "home": (context) => MyHomePage(title: 'test'),
-              "leave":(context) => NewLeave(),
+              "leave": (context) => NewLeave(),
               // "themes": (context) => ThemeChangeRoute(),
               // "language": (context) => LanguageRoute(),
             },
