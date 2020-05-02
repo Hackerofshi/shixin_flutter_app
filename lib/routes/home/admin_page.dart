@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shixin_flutter_app/routes/admin/result_page.dart';
 
 class AdminPage extends StatefulWidget {
   @override
@@ -67,40 +68,67 @@ class _AdminPage extends State<AdminPage> {
                 width: 10.0,
               ),
               Expanded(
-                flex: 1,
-                child: Container(
-                  color: Colors.white,
-                  alignment: Alignment.center,
-                  child: AspectRatio(
-                    aspectRatio: 1 / 1,
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          ClipOval(
-                            child: Container(
-                              width: 100.0,
-                              height: 100.0,
-                              color: Color(0xFFFFF8EE),
-                              alignment: Alignment.center,
-                              child: Image(
-                                image: AssetImage("assets/icon_leave.png"),
-                                width: 49,
+                  flex: 1,
+                  child: GestureDetector(
+                    onTap: () => {skipToPageD()},
+                    child: Container(
+                      color: Colors.white,
+                      alignment: Alignment.center,
+                      child: AspectRatio(
+                        aspectRatio: 1 / 1,
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              ClipOval(
+                                child: Container(
+                                  width: 100.0,
+                                  height: 100.0,
+                                  color: Color(0xFFFFF8EE),
+                                  alignment: Alignment.center,
+                                  child: Image(
+                                    image: AssetImage("assets/icon_leave.png"),
+                                    width: 49,
+                                  ),
+                                ),
                               ),
-                            ),
+                              Text("页面返回数据"),
+                            ],
                           ),
-                          Text("测试"),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
-                ),
-              ),
+                  )),
             ],
           )
         ],
       ),
     );
+  }
+
+  /*等待返回数据是异步操作*/
+  void skipToPageD() async {
+    final result = await Navigator.pushNamed(context, "result");
+
+    People p = result as People;
+
+    /*弹窗显示返回的数据*/
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) {
+          return AlertDialog(
+            title: Text("返回的结果"),
+            content: Text("${p.name},${p.age}"),
+            actions: <Widget>[
+              FlatButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text("确定"))
+            ],
+          );
+        });
   }
 }

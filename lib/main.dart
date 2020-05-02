@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shixin_flutter_app/routes/admin/leave_page.dart';
+import 'package:shixin_flutter_app/routes/admin/result_page.dart';
 import 'package:shixin_flutter_app/routes/home/home_page.dart';
 import 'package:shixin_flutter_app/routes/login_page.dart';
 import 'package:shixin_flutter_app/routes/splash_page.dart';
@@ -70,6 +71,7 @@ class MyApp extends StatelessWidget {
               "login": (context) => LoginRoute(),
               "home": (context) => MyHomePage(title: 'test'),
               "leave": (context) => NewLeave(),
+              "result":(context) => ResultPage(),
               // "themes": (context) => ThemeChangeRoute(),
               // "language": (context) => LanguageRoute(),
             },

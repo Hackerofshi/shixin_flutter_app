@@ -31,7 +31,7 @@ class _LoginRouteState extends State<LoginRoute> {
   @override
   void initState() {
     print("------");
-    if (null != Global.profile) {
+    if (null != Global.profile && Global.profile.user != null) {
       print("Global.profile not null");
       // 自动填充上次登录的用户名，填充后将焦点定位到密码输入框
       _unameController.text = Global.profile.user.login;
@@ -134,8 +134,8 @@ class _LoginRouteState extends State<LoginRoute> {
 
         Map<String, dynamic> user = json.decode(response);
         bool flag = user['success'];
-        Userinfo userinfo = Userinfo.fromJson(user['data']);
         if (flag == true) {
+          Userinfo userinfo = Userinfo.fromJson(user['data']);
           userinfo.login = _unameController.text;
           // 因为登录页返回后，首页会build，所以我们传false，更新user后不触发更新
           Provider.of<UserModel>(context, listen: false).user = userinfo;
@@ -144,7 +144,7 @@ class _LoginRouteState extends State<LoginRoute> {
 
           print("---" + flag.toString());
         } else {
-          showToast(user['errorMsg']);
+          Navigator.of(context).pop();
         }
       } catch (e) {
         //登录失败则提示

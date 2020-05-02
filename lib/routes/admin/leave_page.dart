@@ -18,7 +18,7 @@ class _NewLeave extends State<NewLeave> {
     return Material(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("gg"),
+          title: Text("请假申请"),
         ),
         body: _buildBody(),
       ),
@@ -63,7 +63,7 @@ class _NewLeave extends State<NewLeave> {
                     children: <Widget>[
                       Expanded(
                         child: TextField(
-                          autofocus: true,
+                          autofocus: false,
                           textAlign: TextAlign.right,
                           controller: _lnameController,
                           style:
@@ -88,50 +88,71 @@ class _NewLeave extends State<NewLeave> {
             color: Color(0xFFE5E5E5),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 10, bottom: 10, left: 28, right: 28),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                RichText(
-                  text: TextSpan(
-                    text: "选择项目",
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Color(0xFF7D7D7D),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: SizedBox(),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      Expanded(
-                        child: Text(
-                          "",
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Color(0xFF2D2D2D),
-                          ),
+              padding:
+                  EdgeInsets.only(top: 10, bottom: 10, left: 28, right: 28),
+              child: GestureDetector(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    RichText(
+                      text: TextSpan(
+                        text: "选择项目",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Color(0xFF7D7D7D),
                         ),
                       ),
-                      SizedBox(
-                        width: 5,
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: SizedBox(),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Expanded(
+                            child: Text(
+                              "",
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Color(0xFF2D2D2D),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Image(
+                            image: AssetImage("assets/icon_right.png"),
+                            height: 18,
+                          ),
+                        ],
                       ),
-                      Image(
-                        image: AssetImage("assets/icon_right.png"),
-                        height: 18,
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
+                    )
+                  ],
+                ),
+                onTap: (() {
+                  showModalBottomSheet<void>(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Container(
+                          child: Padding(
+                            padding: const EdgeInsets.all(32.0),
+                            child: Text(
+                              'This is the modal bottom sheet. Slide down to dismiss.',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Theme.of(context).accentColor,
+                                fontSize: 24.0,
+                              ),
+                            ),
+                          ),
+                        );
+                      });
+                }),
+              )),
           Divider(
             height: 10,
             color: Color(0xFFE5E5E5),
@@ -286,7 +307,7 @@ class _NewLeave extends State<NewLeave> {
                     children: <Widget>[
                       Expanded(
                         child: TextField(
-                          autofocus: true,
+                          autofocus: false,
                           textAlign: TextAlign.right,
                           controller: _laddressController,
                           style:
