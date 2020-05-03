@@ -5,6 +5,7 @@ import 'package:shixin_flutter_app/models/userinfo.dart';
 import 'package:shixin_flutter_app/models/UserOrg.dart';
 import 'package:shixin_flutter_app/net/global.dart';
 import 'package:shixin_flutter_app/widget/card_item.dart';
+import 'package:shixin_flutter_app/widget/common_item.dart';
 
 class MinePage extends StatefulWidget {
   final String title;
@@ -146,33 +147,9 @@ class UserHeaderItem extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              margin:
-                  EdgeInsets.only(left: 0, top: 10.0, right: 0, bottom: 10.0),
-              padding: EdgeInsets.all(10.0),
-              color: Colors.white,
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    "公司",
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black,
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      '宁德时代',
-                      textAlign: TextAlign.end,
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Color(0xFF7D7D7D),
-                      ),
-                    ),
-                  ),
-                  Icon(Icons.arrow_forward)
-                ],
-              ),
+            CommonItem(
+              tagName: "公司",
+              categoryName: '小米',
             )
           ],
         ),
