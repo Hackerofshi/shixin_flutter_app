@@ -4,6 +4,9 @@ import 'package:shixin_flutter_app/routes/admin/leave_page.dart';
 import 'package:shixin_flutter_app/routes/admin/result_page.dart';
 import 'package:shixin_flutter_app/routes/home/home_page.dart';
 import 'package:shixin_flutter_app/routes/login_page.dart';
+import 'package:shixin_flutter_app/routes/mine/image_picker_demo.dart';
+import 'package:shixin_flutter_app/routes/mine/image_picker_page.dart';
+import 'package:shixin_flutter_app/routes/mine/multi_image_picker.dart';
 import 'package:shixin_flutter_app/routes/splash_page.dart';
 import 'package:shixin_flutter_app/states/profile_change_notifier.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -71,7 +74,12 @@ class MyApp extends StatelessWidget {
               "login": (context) => LoginRoute(),
               "home": (context) => MyHomePage(title: 'test'),
               "leave": (context) => NewLeave(),
-              "result":(context) => ResultPage(),
+              "result": (context) => ResultPage(),
+              "imagepicker": (context) => ImagePickerPage(),
+              "ImagePickerDemo": (context) => ImagePickerDemo(
+                    title: "demo",
+                  ),
+              "MultiImagePicker": (context) => MyMultiImagePicker(),
               // "themes": (context) => ThemeChangeRoute(),
               // "language": (context) => LanguageRoute(),
             },

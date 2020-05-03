@@ -8,7 +8,7 @@ import 'package:shixin_flutter_app/routes/home/projects.dart';
 import 'package:shixin_flutter_app/routes/home/wy_news_page.dart';
 import 'package:shixin_flutter_app/states/index.dart';
 
-import 'mine.dart';
+import 'package:shixin_flutter_app/routes/mine/mine.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);

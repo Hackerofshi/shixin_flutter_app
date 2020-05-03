@@ -150,6 +150,21 @@ class UserHeaderItem extends StatelessWidget {
             CommonItem(
               tagName: "公司",
               categoryName: '小米',
+            ),
+            CommonItem(
+              tagName: "图片选择",
+              categoryName: 'image-picker',
+              onPress: () => {Navigator.pushNamed(context, "imagepicker")},
+            ),
+            CommonItem(
+              tagName: "图片选择",
+              categoryName: '图片选择的Demo',
+              onPress: () => {Navigator.pushNamed(context, "ImagePickerDemo")},
+            ),
+            CommonItem(
+              tagName: "图片选择",
+              categoryName: '多图的选择',
+              onPress: () => {Navigator.pushNamed(context, "MultiImagePicker")},
             )
           ],
         ),
