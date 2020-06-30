@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shixin_flutter_app/routes/admin/leave_page.dart';
 import 'package:shixin_flutter_app/routes/admin/result_page.dart';
+import 'package:shixin_flutter_app/routes/home/animate/scale_animation.dart';
 import 'package:shixin_flutter_app/routes/home/home_page.dart';
 import 'package:shixin_flutter_app/routes/login_page.dart';
 import 'package:shixin_flutter_app/routes/mine/image_picker_demo.dart';
@@ -82,6 +83,7 @@ class MyApp extends StatelessWidget {
               "MultiImagePicker": (context) => MyMultiImagePicker(),
               // "themes": (context) => ThemeChangeRoute(),
               // "language": (context) => LanguageRoute(),
+              "ScaleAnimation":(context) => ScaleAninationRoute(),
             },
           );
         },

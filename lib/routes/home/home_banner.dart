@@ -21,9 +21,9 @@ class HomeBanner extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return CachedNetworkImage(
               imageUrl: _data[index].imagePath,
-              placeholder: (context, url) => Image.asset("assets/avatar-deafult.png"),
+              placeholder: (context, url) => Image.asset("assets/avatar-default.png"),
               errorWidget: (context, url, error) =>
-                  Image.asset("assets/avatar-deafult.png"),
+                  Image.asset("assets/avatar-default.png"),
             );
           },
           itemCount: _data.length,

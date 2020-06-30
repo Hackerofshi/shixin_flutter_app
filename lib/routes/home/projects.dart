@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shixin_flutter_app/widget/common_item.dart';
 
 class MyProject extends StatefulWidget {
   @override
@@ -15,8 +16,17 @@ class _ProjectState extends State<MyProject> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(title: Text("项目")),
-      body: Center(
-        child: Text("项目"),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          CommonItem(
+            tagName: "动画",
+            categoryName: '测试',
+            onPress: ()=>{
+              Navigator.pushNamed(context, "ScaleAnimation")
+            },
+          ),
+        ],
       ),
     );
   }

@@ -93,6 +93,10 @@ class _LoginRouteState extends State<LoginRoute> {
                   return v.trim().isNotEmpty ? null : gm.passwordRequired;
                 },
               ),
+              Expanded(
+                flex: 1,
+                child: Container(),
+              ),
               Padding(
                 padding: const EdgeInsets.only(top: 25),
                 child: ConstrainedBox(

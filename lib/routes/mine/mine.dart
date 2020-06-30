@@ -82,9 +82,11 @@ class UserHeaderItem extends StatelessWidget {
       elevation: 0,
       margin: EdgeInsets.all(0.0),
       shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(0.0),
-              bottomRight: Radius.circular(0.0))),
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(0.0),
+          bottomRight: Radius.circular(0.0),
+        ),
+      ),
       child: Padding(
         padding:
             EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0, bottom: 0.0),
