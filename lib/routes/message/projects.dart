@@ -26,6 +26,13 @@ class _ProjectState extends State<MyProject> {
               Navigator.pushNamed(context, "ScaleAnimation")
             },
           ),
+          CommonItem(
+            tagName: "二维码",
+            categoryName: '扫一扫',
+            onPress: ()=>{
+              Navigator.pushNamed(context, "QRViewExample")
+            },
+          ),
         ],
       ),
     );

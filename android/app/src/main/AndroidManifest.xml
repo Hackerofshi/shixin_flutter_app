@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.shixin.shixin_flutter_app">
 
+    <uses-sdk android:minSdkVersion="21" tools:overrideLibrary="net.touchcapture.qr.flutterqr,com.google.zxing.client.android"/>
     <!-- io.flutter.app.FlutterApplication is an android.app.Application that
          calls FlutterMain.startInitialization(this); in its onCreate method.
          In most cases you can leave this as-is, but you if you want to provide

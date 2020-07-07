@@ -23,3 +23,7 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+##  SDK版本的各个包统一
+    <uses-sdk android:minSdkVersion="21" tools:overrideLibrary="net.touchcapture.qr.flutterqr,com.google.zxing.client.android"/>
+
