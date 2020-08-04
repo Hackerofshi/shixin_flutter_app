@@ -33,6 +33,13 @@ class _ProjectState extends State<MyProject> {
               Navigator.pushNamed(context, "QRViewExample")
             },
           ),
+          CommonItem(
+            tagName: "Hooks",
+            categoryName: 'Flutter_Hooks',
+            onPress: ()=>{
+              Navigator.pushNamed(context, "ScaleAnimation")
+            },
+          ),
         ],
       ),
     );
