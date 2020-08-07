@@ -5,11 +5,11 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Example extends HookWidget {
+  final Duration duration;
   const Example({Key key, @required this.duration})
       : assert(duration != null),
         super(key: key);
 
-  final Duration duration;
 
 
   @override
