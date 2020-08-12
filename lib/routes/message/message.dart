@@ -44,7 +44,7 @@ class _ProjectState extends State<MyProject> {
             tagName: "InteractiveViewer",
             categoryName: 'InteractiveViewerDemo',
             onPress: ()=>{
-              Navigator.pushNamed(context, "ScaleAnimation")
+              Navigator.pushNamed(context, "InteractiveViewerDemo")
             },
           ),
         ],

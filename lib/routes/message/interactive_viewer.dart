@@ -32,7 +32,7 @@ class InteractiveViewerDemo extends StatelessWidget {
 constrained默认为true,当子组件比InteractiveViewer区域大时，将constrained设为false,
 子组件将被赋予无限的约束。*/
   Widget build(BuildContext context) {
-    const int _rowCount = 20;
+    const int _rowCount = 5;
     const int _columnCount = 4;
 
     return Container(
