@@ -40,6 +40,13 @@ class _ProjectState extends State<MyProject> {
               Navigator.pushNamed(context, "ScaleAnimation")
             },
           ),
+          CommonItem(
+            tagName: "InteractiveViewer",
+            categoryName: 'Flutter_InteractiveViewer',
+            onPress: ()=>{
+              Navigator.pushNamed(context, "ScaleAnimation")
+            },
+          ),
         ],
       ),
     );

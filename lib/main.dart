@@ -6,6 +6,7 @@ import 'package:shixin_flutter_app/routes/home/animate/scale_animation.dart';
 import 'package:shixin_flutter_app/routes/home/home_page.dart';
 import 'package:shixin_flutter_app/routes/login_page.dart';
 import 'package:shixin_flutter_app/routes/message/QRViewExample.dart';
+import 'package:shixin_flutter_app/routes/message/interactive_viewer.dart';
 import 'package:shixin_flutter_app/routes/mine/image_picker_demo.dart';
 import 'package:shixin_flutter_app/routes/mine/image_picker_page.dart';
 import 'package:shixin_flutter_app/routes/mine/multi_image_picker.dart';
@@ -86,6 +87,7 @@ class MyApp extends StatelessWidget {
               // "language": (context) => LanguageRoute(),
               "ScaleAnimation":(context) => ScaleAninationRoute(),
               "QRViewExample":(context) => QRViewExample(),
+             // "InteractiveViewerDemo":(context) => InteractiveViewerDemo(),
             },
           );
         },
