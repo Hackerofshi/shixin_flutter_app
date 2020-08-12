@@ -42,7 +42,7 @@ class _ProjectState extends State<MyProject> {
           ),
           CommonItem(
             tagName: "InteractiveViewer",
-            categoryName: 'Flutter_InteractiveViewer',
+            categoryName: 'InteractiveViewerDemo',
             onPress: ()=>{
               Navigator.pushNamed(context, "ScaleAnimation")
             },

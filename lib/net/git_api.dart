@@ -23,7 +23,7 @@ class Git {
   static TokenInterceptors _tokenInterceptors = new TokenInterceptors();
 
   static Dio dio = new Dio(BaseOptions(
-    baseUrl: 'http://backend.xiaoyang.dongan-tech.com/',
+    baseUrl: 'http://backend.xiaoyang.iteratech.net/',
     headers: {
       HttpHeaders.acceptHeader: "application/vnd.github.squirrel-girl-preview,"
           "application/vnd.github.symmetra-preview+json",

@@ -87,7 +87,7 @@ class MyApp extends StatelessWidget {
               // "language": (context) => LanguageRoute(),
               "ScaleAnimation":(context) => ScaleAninationRoute(),
               "QRViewExample":(context) => QRViewExample(),
-             // "InteractiveViewerDemo":(context) => InteractiveViewerDemo(),
+              "InteractiveViewerDemo":(context) => InteractiveViewerDemo(),
             },
           );
         },

@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shixin_flutter_app/models/project.dart';
 import 'package:shixin_flutter_app/routes/home/admin_page.dart';
 import 'package:shixin_flutter_app/routes/home/project_page.dart';
-import 'package:shixin_flutter_app/routes/message/projects.dart';
+import 'package:shixin_flutter_app/routes/message/message.dart';
 import 'package:shixin_flutter_app/routes/home/wy_news_page.dart';
 import 'package:shixin_flutter_app/states/index.dart';
 
