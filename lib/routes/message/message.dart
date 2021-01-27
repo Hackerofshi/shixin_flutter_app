@@ -22,31 +22,29 @@ class _ProjectState extends State<MyProject> {
           CommonItem(
             tagName: "动画",
             categoryName: '测试',
-            onPress: ()=>{
-              Navigator.pushNamed(context, "ScaleAnimation")
-            },
+            onPress: () => {Navigator.pushNamed(context, "ScaleAnimation")},
           ),
           CommonItem(
             tagName: "二维码",
             categoryName: '扫一扫',
-            onPress: ()=>{
-              Navigator.pushNamed(context, "QRViewExample")
-            },
+            onPress: () => {Navigator.pushNamed(context, "QRViewExample")},
           ),
           CommonItem(
             tagName: "Hooks",
             categoryName: 'Flutter_Hooks',
-            onPress: ()=>{
-              Navigator.pushNamed(context, "ScaleAnimation")
-            },
+            onPress: () => {Navigator.pushNamed(context, "ScaleAnimation")},
           ),
           CommonItem(
             tagName: "InteractiveViewer",
             categoryName: 'InteractiveViewerDemo',
-            onPress: ()=>{
-              Navigator.pushNamed(context, "InteractiveViewerDemo")
-            },
+            onPress: () =>
+                {Navigator.pushNamed(context, "InteractiveViewerDemo")},
           ),
+          CommonItem(
+            tagName: "draggerview",
+            categoryName: 'dragger',
+            onPress: () => {Navigator.pushNamed(context, "")},
+          )
         ],
       ),
     );
