@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 
 class InteractiveViewerDemo extends StatelessWidget {
@@ -38,17 +38,18 @@ constrained默认为true,当子组件比InteractiveViewer区域大时，将const
     return Container(
       width: 300,
       height: 200,
-      child: InteractiveViewer(
-        constrained: false,
-        scaleEnabled: false,
-        child: Table(
-          columnWidths: <int, TableColumnWidth>{
-            for (int column = 0; column < _columnCount; column += 1)
-              column: const FixedColumnWidth(150.0),
-          },
-          children: buildRows(_rowCount, _columnCount),
-        ),
-      ),
+      child: Text("ff"),
+      // child: InteractiveViewer(
+      //   constrained: false,
+      //   scaleEnabled: false,
+      //   child: Table(
+      //     columnWidths: <int, TableColumnWidth>{
+      //       for (int column = 0; column < _columnCount; column += 1)
+      //         column: const FixedColumnWidth(150.0),
+      //     },
+      //     children: buildRows(_rowCount, _columnCount),
+      //   ),
+      // ),
     );
   }
 
@@ -166,13 +167,13 @@ class InteractiveViewerDemo3 extends StatefulWidget {
 
 class _InteractiveViewerDemo3State extends State<InteractiveViewerDemo3>
     with SingleTickerProviderStateMixin {
-  final TransformationController _transformationController =
-  TransformationController();
+  // final TransformationController _transformationController =
+  // TransformationController();
   Animation<Matrix4> _animationReset;
   AnimationController _controllerReset;
 
   void _onAnimateReset() {
-    _transformationController.value = _animationReset.value;
+   // _transformationController.value = _animationReset.value;
     if (!_controllerReset.isAnimating) {
       _animationReset?.removeListener(_onAnimateReset);
       _animationReset = null;
@@ -183,7 +184,7 @@ class _InteractiveViewerDemo3State extends State<InteractiveViewerDemo3>
   void _animateResetInitialize() {
     _controllerReset.reset();
     _animationReset = Matrix4Tween(
-      begin: _transformationController.value,
+     // begin: _transformationController.value,
       end: Matrix4.identity(),
     ).animate(_controllerReset);
     _animationReset.addListener(_onAnimateReset);
@@ -229,16 +230,17 @@ class _InteractiveViewerDemo3State extends State<InteractiveViewerDemo3>
         Container(
           height: 150,
           color: Colors.grey.withAlpha(33),
-          child: InteractiveViewer(
-            boundaryMargin: EdgeInsets.all(40),
-            transformationController: _transformationController,
-            minScale: 0.1,
-            maxScale: 1.8,
-            onInteractionStart: _onInteractionStart,
-            child: Container(
-              child: Image.asset('assets/images/caver.jpeg'),
-            ),
-          ),
+          child: Text("ff"),
+          // child: InteractiveViewer(
+          //   boundaryMargin: EdgeInsets.all(40),
+          //   transformationController: _transformationController,
+          //   minScale: 0.1,
+          //   maxScale: 1.8,
+          //   onInteractionStart: _onInteractionStart,
+          //   child: Container(
+          //     child: Image.asset('assets/images/caver.jpeg'),
+          //   ),
+          // ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -278,9 +280,9 @@ class _InteractiveViewerDemo3State extends State<InteractiveViewerDemo3>
           side: BorderSide(width: 2.0, color: Color(0xFFFFDFDFDF)),
         ),
         onPressed: () {
-          var temp = _transformationController.value.clone();
-          temp.translate(_x - 4);
-          _transformationController.value = temp;
+          //var temp = _transformationController.value.clone();
+         // temp.translate(_x - 4);
+         // _transformationController.value = temp;
         });
   }
 
@@ -295,9 +297,9 @@ class _InteractiveViewerDemo3State extends State<InteractiveViewerDemo3>
           side: BorderSide(width: 2.0, color: Color(0xFFFFDFDFDF)),
         ),
         onPressed: () {
-          var temp = _transformationController.value.clone();
-          temp.translate(_x + 4);
-          _transformationController.value = temp;
+       //   var temp = _transformationController.value.clone();
+        //  temp.translate(_x + 4);
+         // _transformationController.value = temp;
         });
   }
 }
